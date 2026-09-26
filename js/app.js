@@ -4,20 +4,36 @@
 
 import { products, categories, promoCodes } from './products.js';
 
+// Safe storage helper for browser
+const safeStorage = {
+  getItem: (key) => {
+    try {
+      return typeof window !== 'undefined' && window.localStorage ? window.localStorage.getItem(key) : null;
+    } catch (e) {
+      return null;
+    }
+  },
+  setItem: (key, val) => {
+    try {
+      if (typeof window !== 'undefined' && window.localStorage) window.localStorage.setItem(key, val);
+    } catch (e) {}
+  }
+};
+
 // --- State Management ---
 export const state = {
   products: [...products],
   categories: [...categories],
-  cart: JSON.parse(localStorage.getItem('indra_cart') || '[]'),
-  wishlist: JSON.parse(localStorage.getItem('indra_wishlist') || '[]'),
-  compare: JSON.parse(localStorage.getItem('indra_compare') || '[]'),
+  cart: JSON.parse(safeStorage.getItem('indra_cart') || '[]'),
+  wishlist: JSON.parse(safeStorage.getItem('indra_wishlist') || '[]'),
+  compare: JSON.parse(safeStorage.getItem('indra_compare') || '[]'),
   activeCategory: 'all',
   searchQuery: '',
   priceRange: 3000,
   sortBy: 'featured',
   filterInStock: false,
   filterDeals: false,
-  activeCurrency: localStorage.getItem('indra_currency') || 'USD',
+  activeCurrency: safeStorage.getItem('indra_currency') || 'USD',
   currencyRates: {
     USD: { symbol: '$', rate: 1, label: 'USD ($)' },
     EUR: { symbol: '€', rate: 0.92, label: 'EUR (€)' },
@@ -27,12 +43,12 @@ export const state = {
   },
   appliedPromo: null,
   indraCareProtection: false,
-  soundEnabled: localStorage.getItem('indra_sound') !== 'false',
+  soundEnabled: safeStorage.getItem('indra_sound') !== 'false',
   activeQuickViewId: null,
   quickViewSelectedColor: null,
   quickViewSelectedVariant: 0,
   quickViewQty: 1,
-  recentOrders: JSON.parse(localStorage.getItem('indra_orders') || '[]'),
+  recentOrders: JSON.parse(safeStorage.getItem('indra_orders') || '[]'),
   lastPlacedOrder: null
 };
 
@@ -99,23 +115,23 @@ function playSound(type) {
 
 // --- Persistence Helpers ---
 function saveCart() {
-  localStorage.setItem('indra_cart', JSON.stringify(state.cart));
+  safeStorage.setItem('indra_cart', JSON.stringify(state.cart));
   updateHeaderBadges();
 }
 
 function saveWishlist() {
-  localStorage.setItem('indra_wishlist', JSON.stringify(state.wishlist));
+  safeStorage.setItem('indra_wishlist', JSON.stringify(state.wishlist));
   updateHeaderBadges();
 }
 
 function saveCompare() {
-  localStorage.setItem('indra_compare', JSON.stringify(state.compare));
+  safeStorage.setItem('indra_compare', JSON.stringify(state.compare));
   updateHeaderBadges();
   renderCompareBar();
 }
 
 function saveOrders() {
-  localStorage.setItem('indra_orders', JSON.stringify(state.recentOrders));
+  safeStorage.setItem('indra_orders', JSON.stringify(state.recentOrders));
 }
 
 // --- Currency Formatter ---
