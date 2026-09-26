@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Indra Gadgets | Next-Gen Tech & Electronics Flagship</title>
+  <meta name="description" content="Experience cutting-edge neural audio, titanium smartphones, spatial VR, and AI workstations at Indra Gadgets. 2-Year Full IndraCare Warranty & Free Express Delivery.">
+  
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2306b6d4'><polygon points='13 2 3 14 12 14 11 22 21 10 12 10 13 2'/></svg>">
+
+  <!-- Google Fonts: Inter & Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN with custom tech theme config -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Outfit', 'sans-serif'],
+            mono: ['Space Grotesk', 'monospace'],
+          },
+          colors: {
+            indra: {
+              cyan: '#06b6d4',
+              sky: '#38bdf8',
+              indigo: '#6366f1',
+              violet: '#8b5cf6',
+              dark: '#090d16',
+              card: '#0f172a',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Canvas Confetti for Celebration -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body class="bg-[#090d16] text-slate-100 min-h-screen cyber-grid-bg relative selection:bg-cyan-500 selection:text-black font-sans antialiased overflow-x-hidden">
+
+  <!-- Ambient background glow orbs -->
+  <div class="fixed top-0 left-1/4 w-96 h-96 bg-cyan-600/10 rounded-full blur-[128px] pointer-events-none -z-10"></div>
+  <div class="fixed top-1/3 right-10 w-[500px] h-[500px] bg-indigo-600/10 rounded-full blur-[140px] pointer-events-none -z-10"></div>
+  <div class="fixed bottom-10 left-1/3 w-80 h-80 bg-purple-600/10 rounded-full blur-[120px] pointer-events-none -z-10"></div>
+
+  <!-- Announcement Bar -->
+  <aside aria-label="Announcement" class="bg-gradient-to-r from-slate-950 via-cyan-950/80 to-slate-950 border-b border-cyan-500/20 text-xs py-2 px-4 relative z-50">
+    <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-3">
+      <div class="flex items-center gap-2 text-cyan-300 font-medium">
+        <span class="flex h-2 w-2 relative">
+          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
+          <span class="relative inline-flex rounded-full h-2 w-2 bg-cyan-500"></span>
+        </span>
+        <span>⚡ <strong>FLASH DROP:</strong> Use voucher <span class="bg-cyan-500/20 border border-cyan-400/40 text-white font-mono px-1.5 py-0.5 rounded font-bold">CYBERGADGET</span> for 15% OFF!</span>
+        <span class="hidden md:inline text-slate-400">• Free Worldwide Express over $99</span>
+      </div>
+
+      <div class="flex items-center gap-4 text-slate-300">
+        <!-- Sound FX Button -->
+        <button id="btn-sound-toggle" class="hover:text-cyan-400 transition-colors flex items-center gap-1.5 text-xs font-medium" title="Toggle UI Sound Feedback">
+          <svg class="w-3.5 h-3.5 text-cyan-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 010 14.14M15.54 8.46a5 5 0 010 7.07"/></svg>
+          <span class="hidden sm:inline">Cyber Audio</span>
+        </button>
+
+        <span class="text-white/20">|</span>
+
+        <!-- Order Tracking Quick Link -->
+        <button id="btn-open-tracking" class="hover:text-cyan-400 transition-colors flex items-center gap-1 text-xs font-medium">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+          <span>Track Order</span>
+        </button>
+
+        <span class="text-white/20">|</span>
+
+        <!-- Currency Selector -->
+        <div class="flex items-center gap-1">
+          <label for="currency-select" class="sr-only">Currency</label>
+          <select id="currency-select" class="bg-slate-900 border border-white/10 rounded-md text-xs py-0.5 px-2 text-cyan-300 focus:outline-none focus:border-cyan-400 cursor-pointer">
+            <option value="USD">USD ($)</option>
+            <option value="EUR">EUR (€)</option>
+            <option value="GBP">GBP (£)</option>
+            <option value="JPY">JPY (¥)</option>
+            <option value="INR">INR (₹)</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main Navigation Header -->
+  <header class="glass-nav sticky top-0 z-40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
+      
+      <!-- Brand Logo -->
+      <a href="#" class="flex items-center gap-3 group flex-shrink-0">
+        <div class="w-11 h-11 rounded-2xl bg-gradient-to-br from-cyan-500 via-indigo-600 to-purple-600 p-[1.5px] shadow-[0_0_20px_rgba(6,182,212,0.4)] group-hover:shadow-[0_0_28px_rgba(6,182,212,0.7)] transition-all">
+          <div class="w-full h-full bg-slate-950 rounded-2xl flex items-center justify-center">
+            <svg class="w-6 h-6 text-cyan-400 transition-transform group-hover:scale-110" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+            </svg>
+          </div>
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="text-xl sm:text-2xl font-black tracking-tight gradient-text-indra uppercase">INDRA</span>
+            <span class="text-xl sm:text-2xl font-extrabold tracking-tight text-white uppercase">GADGETS</span>
+            <span class="hidden sm:inline-block px-1.5 py-0.5 text-[9px] font-extrabold uppercase bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 rounded tracking-widest">PRO TECH</span>
+          </div>
+          <p class="text-[10px] text-slate-400 font-mono tracking-wider">NEURAL AUDIO • HARDWARE • CYBER LABS</p>
+        </div>
+      </a>
+
+      <!-- Live Search Bar with Dropdown -->
+      <div class="flex-1 max-w-xl relative hidden md:block">
+        <div class="relative">
+          <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          </span>
+          <input 
+            type="text" 
+            id="main-search-input"
+            placeholder="Search audio, smartphones, VR, drones... (Press '/' to search)"
+            class="w-full pl-10 pr-12 py-2.5 bg-slate-900/80 border border-white/10 rounded-xl text-sm text-slate-100 placeholder-slate-400 focus:outline-none focus:border-cyan-400 focus:ring-2 focus:ring-cyan-500/20 transition-all"
+            autocomplete="off"
+          />
+          <span class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none text-[10px] font-mono text-slate-500 bg-slate-800/80 px-2 my-1.5 mr-1.5 rounded border border-white/5">
+            /
+          </span>
+        </div>
+
+        <!-- Live Autocomplete Dropdown -->
+        <div id="search-dropdown" class="hidden absolute top-full left-0 right-0 mt-2 bg-slate-900/95 backdrop-blur-2xl border border-cyan-500/30 rounded-2xl shadow-2xl overflow-hidden z-50"></div>
+      </div>
+
+      <!-- Header Action Icons -->
+      <div class="flex items-center gap-2 sm:gap-3">
+        
+        <!-- Compare Action Trigger -->
+        <button 
+          id="btn-open-compare" 
+          class="relative p-2.5 rounded-xl bg-slate-900/60 hover:bg-slate-800 border border-white/10 hover:border-cyan-500/40 text-slate-300 hover:text-cyan-400 transition-all"
+          title="Compare Gadgets"
+        >
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/><line x1="4" y1="4" x2="9" y2="9"/></svg>
+          <span id="compare-badge-count" class="hidden absolute -top-1.5 -right-1.5 w-5 h-5 rounded-full bg-cyan-500 text-slate-950 font-bold text-[10px] flex items-center justify-center shadow-[0_0_10px_#06b6d4]">0</span>
+        </button>
+
+        <!-- Wishlist Trigger -->
+        <button 
+          id="btn-open-wishlist" 
+          class="relative p-2.5 rounded-xl bg-slate-900/60 hover:bg-slate-800 border border-white/10 hover:border-rose-500/40 text-slate-300 hover:text-rose-400 transition-all"
+          title="Wishlist Vault"
+        >
+          <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+          <span id="wishlist-badge-count" class="hidden absolute -top-1.5 -right-1.5 w-5 h-5 rounded-full bg-rose-500 text-white font-bold text-[10px] flex items-center justify-center shadow-[0_0_10px_#f43f5e]">0</span>
+        </button>
+
+        <!-- Cart Trigger Button -->
+        <button 
+          id="btn-open-cart" 
+          class="relative flex items-center gap-2.5 px-4 py-2.5 rounded-xl btn-cyber-primary font-bold text-sm"
+          title="View Shopping Cart"
+        >
+          <div class="relative">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+            <span id="cart-badge-count" class="hidden absolute -top-2 -right-2 w-5 h-5 rounded-full bg-white text-slate-950 font-black text-[10px] flex items-center justify-center shadow-md">0</span>
+          </div>
+          <span class="hidden sm:inline font-mono" id="cart-subtotal-header">$0</span>
+        </button>
+
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Banner Section -->
+    <section class="relative pt-6 pb-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto overflow-hidden">
+      <div class="glass-panel rounded-3xl border border-white/10 p-6 sm:p-10 lg:p-12 relative overflow-hidden">
+        
+        <!-- Scanline animation effect -->
+        <div class="scanline"></div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+          
+          <!-- Hero Copy -->
+          <div class="lg:col-span-7 flex flex-col items-start z-10">
+            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-400/30 text-xs font-bold text-cyan-300 mb-6">
+              <span class="w-2 h-2 rounded-full bg-cyan-400 animate-ping"></span>
+              INDRA FLAGSHIP 2026 • OFFICIAL STORE LAUNCH
+            </div>
+
+            <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white leading-tight mb-4">
+              Acoustic Perfection.<br>
+              <span class="gradient-text-indra">Neural Cyber Gadgets.</span>
+            </h1>
+
+            <p class="text-sm sm:text-base text-slate-300 leading-relaxed max-w-xl mb-6">
+              Welcome to <strong>Indra Gadgets</strong>. Discover precision-engineered flagship audio, ultra-fast titanium smartphones, spatial VR decks, and cybernetic desktop workstations crafted for makers, creators, and future-forward minds.
+            </p>
+
+            <!-- Key Spec Highlights -->
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 w-full max-w-lg mb-8">
+              <div class="p-3 rounded-xl bg-slate-900/80 border border-white/5">
+                <div class="text-[11px] text-slate-400">Acoustic Drivers</div>
+                <div class="text-sm font-bold text-cyan-400">45mm Beryllium</div>
+              </div>
+              <div class="p-3 rounded-xl bg-slate-900/80 border border-white/5">
+                <div class="text-[11px] text-slate-400">Battery Endurance</div>
+                <div class="text-sm font-bold text-cyan-400">96 Hours ANC</div>
+              </div>
+              <div class="p-3 rounded-xl bg-slate-900/80 border border-white/5 col-span-2 sm:col-span-1">
+                <div class="text-[11px] text-slate-400">Neural Chipset</div>
+                <div class="text-sm font-bold text-cyan-400">Indra N-Core AI</div>
+              </div>
+            </div>
+
+            <!-- Hero Action Buttons -->
+            <div class="flex flex-wrap items-center gap-4 mb-6">
+              <button 
+                id="btn-hero-flagship"
+                class="px-7 py-3.5 rounded-xl btn-cyber-primary text-sm font-bold flex items-center gap-2 group"
+              >
+                <span>Shop Indra Quantum X1</span>
+                <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </button>
+
+              <a 
+                href="#catalog-section"
+                class="px-6 py-3.5 rounded-xl btn-cyber-outline text-sm font-bold flex items-center gap-2"
+              >
+                <span>Browse All 16 Gadgets</span>
+              </a>
+            </div>
+
+            <!-- Trust Guarantee Badges -->
+            <div class="flex flex-wrap items-center gap-y-2 gap-x-6 text-xs text-slate-400 pt-4 border-t border-white/10 w-full">
+              <div class="flex items-center gap-1.5">
+                <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+                <span>Free 2-Day Air Express</span>
+              </div>
+              <div class="flex items-center gap-1.5">
+                <svg class="w-4 h-4 text-cyan-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                <span>2-Year IndraCare Protection</span>
+              </div>
+              <div class="flex items-center gap-1.5">
+                <svg class="w-4 h-4 text-indigo-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+                <span>30-Day Hassle-Free Trial</span>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Hero Holographic Card Visual -->
+          <div class="lg:col-span-5 relative flex justify-center">
+            
+            <div class="relative w-full max-w-sm aspect-square rounded-3xl bg-gradient-to-b from-slate-900/90 to-slate-950 p-6 border border-cyan-500/30 shadow-[0_20px_50px_rgba(6,182,212,0.2)] flex flex-col justify-between overflow-hidden">
+              
+              <!-- Card Top Header -->
+              <div class="flex items-center justify-between z-10">
+                <span class="px-2.5 py-1 rounded-md text-[10px] font-extrabold uppercase bg-amber-500/20 text-amber-300 border border-amber-500/30">
+                  FLAGSHIP OF THE YEAR
+                </span>
+                <div class="flex items-center gap-1 text-xs text-amber-400 font-bold">
+                  ★ 4.9 <span class="text-slate-500 text-[10px]">(318 Reviews)</span>
+                </div>
+              </div>
+
+              <!-- Product Floating Visual -->
+              <div class="relative my-4 flex items-center justify-center animate-subtle-float cursor-pointer" onclick="window.openQuickView('indra-quantum-x1')">
+                <div class="w-56 h-56 rounded-full bg-cyan-500/10 blur-2xl absolute"></div>
+                <img 
+                  src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=800&q=80" 
+                  alt="Indra Quantum X1"
+                  class="max-h-52 object-contain relative z-10 filter drop-shadow-[0_15px_30px_rgba(0,0,0,0.8)] hover:scale-105 transition-transform"
+                >
+              </div>
+
+              <!-- Card Bottom Details & Countdown -->
+              <div class="z-10 pt-3 border-t border-white/10">
+                <div class="flex items-center justify-between mb-2">
+                  <div>
+                    <h3 class="text-sm font-bold text-white">Indra Quantum X1 Wireless ANC</h3>
+                    <div class="text-[11px] text-cyan-400">Stealth Obsidian / Titanium</div>
+                  </div>
+                  <div class="text-right">
+                    <div class="text-base font-black text-white">$349</div>
+                    <div class="text-[10px] text-slate-500 line-through">$429</div>
+                  </div>
+                </div>
+
+                <!-- Flash Countdown Meter -->
+                <div class="flex items-center justify-between text-[11px] p-2 rounded-xl bg-cyan-950/50 border border-cyan-500/20 text-cyan-300">
+                  <span class="flex items-center gap-1.5 font-medium">
+                    <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
+                    Flash Deal Ends:
+                  </span>
+                  <span id="hero-countdown-timer" class="font-mono font-bold text-white">08:42:15</span>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Value Proposition Ribbon -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        
+        <div class="glass-panel p-5 rounded-2xl border border-white/10 flex items-start gap-4 hover:border-cyan-500/30 transition-all">
+          <div class="w-12 h-12 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 flex-shrink-0">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          </div>
+          <div>
+            <h4 class="font-bold text-white text-sm">HyperSpeed Air Dispatch</h4>
+            <p class="text-xs text-slate-400 mt-1 leading-relaxed">Same-day autonomous drone dispatch with global express courier tracking.</p>
+          </div>
+        </div>
+
+        <div class="glass-panel p-5 rounded-2xl border border-white/10 flex items-start gap-4 hover:border-cyan-500/30 transition-all">
+          <div class="w-12 h-12 rounded-xl bg-indigo-500/10 border border-indigo-500/30 flex items-center justify-center text-indigo-400 flex-shrink-0">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <div>
+            <h4 class="font-bold text-white text-sm">2-Year IndraCare Protection</h4>
+            <p class="text-xs text-slate-400 mt-1 leading-relaxed">Zero deductible repair and full replacement warranty included on all gadgets.</p>
+          </div>
+        </div>
+
+        <div class="glass-panel p-5 rounded-2xl border border-white/10 flex items-start gap-4 hover:border-cyan-500/30 transition-all">
+          <div class="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 flex-shrink-0">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </div>
+          <div>
+            <h4 class="font-bold text-white text-sm">Certified Genuine Silicon</h4>
+            <p class="text-xs text-slate-400 mt-1 leading-relaxed">Direct from Tier-1 aerospace fabrication labs with authentic serial verification.</p>
+          </div>
+        </div>
+
+        <div class="glass-panel p-5 rounded-2xl border border-white/10 flex items-start gap-4 hover:border-cyan-500/30 transition-all">
+          <div class="w-12 h-12 rounded-xl bg-purple-500/10 border border-purple-500/30 flex items-center justify-center text-purple-400 flex-shrink-0">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+          </div>
+          <div>
+            <h4 class="font-bold text-white text-sm">256-Bit Encrypted CyberPay</h4>
+            <p class="text-xs text-slate-400 mt-1 leading-relaxed">Instant checkout with Apple Pay, Google Pay, Credit Cards, or Solana crypto.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Deal of the Day Flash Spotlight Card -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
+      <div class="glass-panel rounded-3xl border border-rose-500/30 p-6 sm:p-8 bg-gradient-to-r from-rose-950/30 via-slate-900/80 to-slate-950 relative overflow-hidden">
+        
+        <div class="flex flex-col lg:flex-row items-center justify-between gap-8">
+          
+          <div class="flex items-center gap-6">
+            <div class="w-28 h-28 sm:w-36 sm:h-36 rounded-2xl bg-slate-950 border border-white/10 p-3 flex items-center justify-center flex-shrink-0">
+              <img 
+                src="https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?auto=format&fit=crop&w=800&q=80" 
+                alt="Indra Titan V Ultra" 
+                class="max-h-full max-w-full object-contain filter drop-shadow-xl"
+              >
+            </div>
+            <div>
+              <div class="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full bg-rose-500/20 text-rose-300 border border-rose-500/40 text-[11px] font-extrabold uppercase mb-2">
+                <span class="w-2 h-2 rounded-full bg-rose-500 animate-ping"></span>
+                LIMITED TIME FLASH DROP
+              </div>
+              <h3 class="text-xl sm:text-2xl font-black text-white">Indra Titan V Ultra 5G (Titanium Chassis)</h3>
+              <p class="text-xs sm:text-sm text-slate-300 mt-1">Snapdragon 8 Gen 3 • 200MP Periscope Camera • 120W HyperCharge</p>
+              
+              <!-- Stock Claimed Bar -->
+              <div class="mt-3 max-w-xs">
+                <div class="flex justify-between text-[11px] text-slate-400 mb-1">
+                  <span>Only <strong class="text-rose-400 font-bold">11 units</strong> remaining!</span>
+                  <span>78% Claimed</span>
+                </div>
+                <div class="w-full h-2 bg-slate-800 rounded-full overflow-hidden">
+                  <div class="h-full bg-gradient-to-r from-rose-500 to-amber-500 rounded-full" style="width: 78%;"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Price & Quick Add -->
+          <div class="flex flex-col sm:flex-row lg:flex-col items-center lg:items-end gap-4 flex-shrink-0">
+            <div class="text-center lg:text-right">
+              <div class="flex items-baseline gap-2">
+                <span class="text-3xl font-black text-white">$999</span>
+                <span class="text-base line-through text-slate-500">$1,199</span>
+              </div>
+              <span class="text-xs font-bold text-emerald-400">Save $200 with code CYBERGADGET</span>
+            </div>
+            <button 
+              class="px-6 py-3 rounded-xl btn-cyber-primary text-sm font-bold flex items-center gap-2"
+              onclick="window.openQuickView('indra-titan-v-ultra')"
+            >
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+              <span>Claim Flash Deal</span>
+            </button>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Main Catalog Section -->
+    <section id="catalog-section" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-20 scroll-mt-24">
+      
+      <!-- Section Title & Subheading -->
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
+        <div>
+          <div class="text-xs font-bold font-mono text-cyan-400 uppercase tracking-widest mb-1">// HARDWARE INVENTORY</div>
+          <h2 class="text-2xl sm:text-3xl font-black text-white">Flagship Gadget Catalog</h2>
+          <p class="text-xs sm:text-sm text-slate-400 mt-1">Explore our full line of acoustic flagships, smartphones, VR gear, and workstations.</p>
+        </div>
+        <div id="products-count" class="text-xs font-mono text-slate-400 bg-slate-900/60 px-3 py-1.5 rounded-xl border border-white/5">
+          Showing 16 of 16 Gadgets
+        </div>
+      </div>
+
+      <!-- Categories Navigation Pills -->
+      <div class="mb-6 overflow-x-auto pb-2 scrollbar-none">
+        <div id="categories-container" class="flex items-center gap-2">
+          <!-- Populated by js/app.js -->
+        </div>
+      </div>
+
+      <!-- Filters & Sorting Bar -->
+      <div class="glass-panel rounded-2xl border border-white/10 p-4 mb-8 flex flex-wrap items-center justify-between gap-4">
+        
+        <!-- Price Slider Filter -->
+        <div class="flex items-center gap-3 min-w-[240px]">
+          <span class="text-xs font-bold text-slate-400">Max Price:</span>
+          <input 
+            type="range" 
+            id="price-slider" 
+            min="50" 
+            max="3000" 
+            step="50" 
+            value="3000" 
+            class="cyber-slider flex-1"
+          />
+          <span id="price-slider-label" class="text-xs font-mono font-bold text-cyan-400 min-w-[50px]">$3,000</span>
+        </div>
+
+        <!-- Quick Filter Toggles -->
+        <div class="flex items-center gap-4 flex-wrap">
+          <label class="flex items-center gap-2 cursor-pointer text-xs font-medium text-slate-300 hover:text-white">
+            <input type="checkbox" id="filter-in-stock" class="rounded bg-slate-800 border-white/20 text-cyan-500 focus:ring-cyan-500">
+            <span>⚡ In-Stock Only</span>
+          </label>
+
+          <label class="flex items-center gap-2 cursor-pointer text-xs font-medium text-slate-300 hover:text-white">
+            <input type="checkbox" id="filter-deals" class="rounded bg-slate-800 border-white/20 text-rose-500 focus:ring-rose-500">
+            <span>🔥 Deals Only</span>
+          </label>
+        </div>
+
+        <!-- Sort Select -->
+        <div class="flex items-center gap-2 ml-auto">
+          <label for="sort-select" class="text-xs font-bold text-slate-400">Sort By:</label>
+          <select id="sort-select" class="bg-slate-900 border border-white/10 rounded-xl text-xs py-1.5 px-3 text-slate-200 focus:outline-none focus:border-cyan-400 cursor-pointer">
+            <option value="featured">Featured / Deals</option>
+            <option value="price-low">Price: Low to High</option>
+            <option value="price-high">Price: High to Low</option>
+            <option value="rating">Highest Rated</option>
+            <option value="reviews">Most Reviewed</option>
+          </select>
+        </div>
+
+      </div>
+
+      <!-- Products Grid -->
+      <div id="products-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <!-- Rendered dynamically by js/app.js -->
+      </div>
+
+    </section>
+
+    <!-- Verified Tech Reviews & Community Section -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-20">
+      <div class="text-center max-w-2xl mx-auto mb-10">
+        <div class="text-xs font-bold font-mono text-cyan-400 uppercase tracking-widest mb-1">// FIELD TEST TELEMETRY</div>
+        <h2 class="text-2xl sm:text-3xl font-black text-white">Praised By Tech Enthusiasts & Audiophiles</h2>
+        <p class="text-xs sm:text-sm text-slate-400 mt-1">Read what the tech press and verified owners say about Indra Gadgets.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        
+        <div class="glass-panel p-6 rounded-2xl border border-white/10 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center gap-1 text-amber-400 mb-3">
+              ★ ★ ★ ★ ★
+            </div>
+            <p class="text-xs text-slate-300 leading-relaxed italic mb-4">
+              "The Indra Quantum X1 is hands down the best wireless headphone I've tested in 2026. The 45mm beryllium drivers deliver bass depth that rivals multi-thousand-dollar studio gear, and the 96-hour battery is insane."
+            </p>
+          </div>
+          <div class="flex items-center gap-3 pt-4 border-t border-white/10">
+            <div class="w-9 h-9 rounded-full bg-cyan-500/20 border border-cyan-400 flex items-center justify-center font-bold text-xs text-cyan-300">
+              MK
+            </div>
+            <div>
+              <div class="text-xs font-bold text-white">Marcus Vance</div>
+              <div class="text-[10px] text-cyan-400">Chief Editor, CyberAudio Weekly</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="glass-panel p-6 rounded-2xl border border-white/10 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center gap-1 text-amber-400 mb-3">
+              ★ ★ ★ ★ ★
+            </div>
+            <p class="text-xs text-slate-300 leading-relaxed italic mb-4">
+              "The Titan V Ultra 5G camera system blew me away. 100x zoom with crisp edge sharpness, plus the 120W charging that fills 0-100% in under 20 minutes before my morning coffee is done."
+            </p>
+          </div>
+          <div class="flex items-center gap-3 pt-4 border-t border-white/10">
+            <div class="w-9 h-9 rounded-full bg-indigo-500/20 border border-indigo-400 flex items-center justify-center font-bold text-xs text-indigo-300">
+              EL
+            </div>
+            <div>
+              <div class="text-xs font-bold text-white">Elena Rostova</div>
+              <div class="text-[10px] text-indigo-400">Mobile Photographer & Reviewer</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="glass-panel p-6 rounded-2xl border border-white/10 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center gap-1 text-amber-400 mb-3">
+              ★ ★ ★ ★ ★
+            </div>
+            <p class="text-xs text-slate-300 leading-relaxed italic mb-4">
+              "The HoloVision Spatial VR headset made working on multi-monitor codebases an everyday joy. Super lightweight, zero eye strain, and 4K Micro-OLED per eye. Indra Gadgets customer support was lightning fast."
+            </p>
+          </div>
+          <div class="flex items-center gap-3 pt-4 border-t border-white/10">
+            <div class="w-9 h-9 rounded-full bg-purple-500/20 border border-purple-400 flex items-center justify-center font-bold text-xs text-purple-300">
+              SR
+            </div>
+            <div>
+              <div class="text-xs font-bold text-white">Soren Reed</div>
+              <div class="text-[10px] text-purple-400">AI Architect & VR Developer</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- VIP Syndicate Newsletter Box -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-20">
+      <div class="glass-panel rounded-3xl border border-cyan-500/30 p-8 sm:p-12 bg-gradient-to-br from-slate-900 via-slate-950 to-cyan-950/40 relative overflow-hidden">
+        
+        <div class="max-w-2xl mx-auto text-center relative z-10">
+          <div class="w-14 h-14 mx-auto mb-4 rounded-2xl bg-cyan-500/10 border border-cyan-400/40 flex items-center justify-center text-cyan-400 shadow-[0_0_20px_rgba(6,182,212,0.4)]">
+            <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          
+          <h3 class="text-2xl sm:text-3xl font-black text-white mb-2">Join the Indra Syndicate VIP Club</h3>
+          <p class="text-xs sm:text-sm text-slate-300 mb-6">
+            Get private access to limited flash drops, prototype hardware releases, and an immediate <strong class="text-cyan-400">15% discount voucher</strong> on your first order.
+          </p>
+
+          <form id="newsletter-form" class="flex flex-col sm:flex-row items-center gap-3 max-w-md mx-auto">
+            <input 
+              type="email" 
+              id="newsletter-email" 
+              placeholder="Enter your cyber email address..."
+              required
+              class="w-full px-4 py-3 bg-slate-900 border border-white/15 rounded-xl text-sm text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400 focus:ring-2 focus:ring-cyan-500/20"
+            />
+            <button 
+              type="submit" 
+              class="w-full sm:w-auto px-6 py-3 rounded-xl btn-cyber-primary text-sm font-bold flex-shrink-0 flex items-center justify-center gap-2"
+            >
+              <span>Join & Claim 15%</span>
+            </button>
+          </form>
+          <p class="text-[11px] text-slate-500 mt-3">Zero spam. Cryptographically secure communications only.</p>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- Global Footer -->
+  <footer class="bg-slate-950 border-t border-white/10 pt-16 pb-12 px-4 sm:px-6 lg:px-8 text-xs text-slate-400">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-12">
+      
+      <!-- Brand column -->
+      <div class="lg:col-span-2">
+        <div class="flex items-center gap-2 mb-3">
+          <span class="text-xl font-black gradient-text-indra uppercase">INDRA</span>
+          <span class="text-xl font-extrabold text-white uppercase">GADGETS</span>
+        </div>
+        <p class="text-xs text-slate-400 max-w-sm mb-4 leading-relaxed">
+          Pioneering the frontiers of neural acoustics, spatial computing, titanium mobile engineering, and next-generation consumer electronics.
+        </p>
+        <div class="flex items-center gap-3 text-slate-400">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+          <span class="text-[11px] text-slate-300">All Indra Quantum Systems Online & Operational</span>
+        </div>
+      </div>
+
+      <!-- Quick Links -->
+      <div>
+        <h4 class="font-bold text-white text-xs uppercase tracking-wider mb-3">Flagship Gear</h4>
+        <ul class="space-y-2">
+          <li><a href="#catalog-section" class="hover:text-cyan-400 transition-colors">Quantum X1 Wireless ANC</a></li>
+          <li><a href="#catalog-section" class="hover:text-cyan-400 transition-colors">Titan V Ultra 5G Phone</a></li>
+          <li><a href="#catalog-section" class="hover:text-cyan-400 transition-colors">Blade 16 Pro AI Workstation</a></li>
+          <li><a href="#catalog-section" class="hover:text-cyan-400 transition-colors">HoloVision Spatial VR</a></li>
+          <li><a href="#catalog-section" class="hover:text-cyan-400 transition-colors">AeroDrone 4K Cine</a></li>
+        </ul>
+      </div>
+
+      <!-- Support & Help -->
+      <div>
+        <h4 class="font-bold text-white text-xs uppercase tracking-wider mb-3">Client Services</h4>
+        <ul class="space-y-2">
+          <li><button onclick="window.openTrackingModal()" class="hover:text-cyan-400 transition-colors text-left">Track Autonomous Dispatch</button></li>
+          <li><a href="#catalog-section" class="hover:text-cyan-400 transition-colors">IndraCare 2-Year Warranty</a></li>
+          <li><a href="#catalog-section" class="hover:text-cyan-400 transition-colors">30-Day Money Back Policy</a></li>
+          <li><a href="#catalog-section" class="hover:text-cyan-400 transition-colors">Certified Refurbished Gear</a></li>
+          <li><a href="#catalog-section" class="hover:text-cyan-400 transition-colors">Global Voltage & Standards</a></li>
+        </ul>
+      </div>
+
+      <!-- Secure Payment Badges -->
+      <div>
+        <h4 class="font-bold text-white text-xs uppercase tracking-wider mb-3">Encrypted CyberPay</h4>
+        <p class="text-[11px] text-slate-400 mb-3">Accepting global digital currencies and verified gateways:</p>
+        <div class="flex flex-wrap gap-2">
+          <span class="px-2 py-1 rounded bg-slate-900 border border-white/10 text-[10px] font-mono text-cyan-300">VISA</span>
+          <span class="px-2 py-1 rounded bg-slate-900 border border-white/10 text-[10px] font-mono text-cyan-300">MASTERCARD</span>
+          <span class="px-2 py-1 rounded bg-slate-900 border border-white/10 text-[10px] font-mono text-cyan-300">APPLE PAY</span>
+          <span class="px-2 py-1 rounded bg-slate-900 border border-white/10 text-[10px] font-mono text-cyan-300">GOOGLE PAY</span>
+          <span class="px-2 py-1 rounded bg-slate-900 border border-white/10 text-[10px] font-mono text-cyan-300">SOLANA</span>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="max-w-7xl mx-auto pt-8 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px]">
+      <div>
+        © 2026 Indra Gadgets Labs Inc. All rights reserved.
+      </div>
+      <div class="flex items-center gap-6">
+        <a href="#" class="hover:text-slate-200">Privacy Protocol</a>
+        <a href="#" class="hover:text-slate-200">Terms of Cyber Commerce</a>
+        <a href="#" class="hover:text-slate-200">FCC & CE Declarations</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========================================================================= -->
+  <!-- MODALS & DRAWERS                                                          -->
+  <!-- ========================================================================= -->
+
+  <!-- Slide-Out Shopping Cart Drawer -->
+  <div id="cart-drawer" class="fixed inset-0 z-50 drawer-hidden">
+    <div id="cart-drawer-backdrop" class="drawer-backdrop absolute inset-0 bg-slate-950/80 backdrop-blur-sm"></div>
+    <div class="drawer-content absolute top-0 right-0 bottom-0 w-full max-w-md bg-slate-950 border-l border-white/10 shadow-2xl flex flex-col justify-between">
+      
+      <!-- Drawer Header -->
+      <div class="p-5 border-b border-white/10 flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <svg class="w-5 h-5 text-cyan-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+          <h3 class="font-bold text-white text-base">Your Cyber Cart</h3>
+        </div>
+        <button id="btn-close-cart" class="p-2 rounded-xl text-slate-400 hover:text-white hover:bg-slate-900 transition-colors">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+      <!-- Free Shipping Meter -->
+      <div class="px-5 py-3 bg-slate-900/80 border-b border-white/5">
+        <div id="cart-shipping-text" class="text-xs text-slate-300 mb-1.5 font-medium">
+          Add items to qualify for FREE Express Shipping!
+        </div>
+        <div class="w-full h-1.5 bg-slate-800 rounded-full overflow-hidden">
+          <div id="cart-shipping-progress" class="h-full bg-gradient-to-r from-cyan-400 to-emerald-400 rounded-full transition-all duration-300" style="width: 0%;"></div>
+        </div>
+      </div>
+
+      <!-- Cart Items List (Scrollable) -->
+      <div id="cart-items-container" class="flex-1 overflow-y-auto p-5 space-y-3">
+        <!-- Rendered by js/app.js -->
+      </div>
+
+      <!-- Cart Footer / Order Summary -->
+      <div class="p-5 bg-slate-900/90 border-t border-white/10 space-y-4">
+        
+        <!-- IndraCare Protection Plan Upsell Checkbox -->
+        <label class="flex items-start gap-2.5 p-3 rounded-xl bg-slate-950 border border-cyan-500/20 cursor-pointer">
+          <input type="checkbox" id="cart-indracare-toggle" class="mt-0.5 rounded bg-slate-800 border-white/20 text-cyan-500 focus:ring-cyan-500">
+          <div class="text-xs">
+            <span class="font-bold text-white block">Add 2-Year IndraCare Protection (+$29)</span>
+            <span class="text-slate-400">Covers accidental drops, water spills, and free battery replacements.</span>
+          </div>
+        </label>
+
+        <!-- Promo Code Input -->
+        <div class="flex items-center gap-2">
+          <input 
+            type="text" 
+            id="cart-promo-input" 
+            placeholder="Promo code (e.g. CYBERGADGET)" 
+            class="flex-1 px-3 py-2 bg-slate-950 border border-white/10 rounded-xl text-xs uppercase text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400"
+          />
+          <button 
+            id="btn-apply-promo"
+            class="px-4 py-2 rounded-xl btn-cyber-outline text-xs font-bold"
+          >Apply</button>
+        </div>
+
+        <!-- Calculations Breakdown -->
+        <div class="space-y-1.5 text-xs">
+          <div class="flex justify-between text-slate-400">
+            <span>Subtotal</span>
+            <span id="cart-subtotal" class="font-mono text-white">$0</span>
+          </div>
+          <div class="flex justify-between text-emerald-400 hidden">
+            <span>Discount Applied</span>
+            <span id="cart-discount" class="font-mono">-$0</span>
+          </div>
+          <div class="flex justify-between text-slate-400">
+            <span>Express Shipping</span>
+            <span id="cart-shipping" class="font-mono text-white">$0</span>
+          </div>
+          <div class="flex justify-between text-slate-400">
+            <span>Estimated Sales Tax (8%)</span>
+            <span id="cart-tax" class="font-mono text-white">$0</span>
+          </div>
+          <div class="pt-2 border-t border-white/10 flex justify-between text-sm font-bold text-white">
+            <span>Total Amount</span>
+            <span id="cart-total" class="font-mono text-cyan-400 text-base">$0</span>
+          </div>
+        </div>
+
+        <!-- Checkout Trigger Button -->
+        <button 
+          id="btn-proceed-checkout" 
+          class="w-full py-3.5 rounded-xl btn-cyber-primary text-sm font-bold flex items-center justify-center gap-2"
+        >
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+          <span>Proceed to Cyber Checkout</span>
+        </button>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Quick View Modal -->
+  <div id="quickview-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 modal-hidden">
+    <div class="modal-backdrop absolute inset-0 bg-slate-950/85 backdrop-blur-md" onclick="window.closeQuickView()"></div>
+    <div class="modal-dialog relative w-full max-w-4xl max-h-[90vh] bg-slate-900 border border-cyan-500/30 rounded-3xl shadow-2xl overflow-y-auto p-6 sm:p-8 z-10">
+      <button 
+        id="btn-close-quickview"
+        class="absolute top-5 right-5 p-2 rounded-xl text-slate-400 hover:text-white bg-slate-950/80 hover:bg-slate-800 transition-colors z-20"
+      >
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+
+      <div id="quickview-modal-content">
+        <!-- Rendered by js/app.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Side-by-Side Gadget Compare Modal -->
+  <div id="compare-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 modal-hidden">
+    <div class="modal-backdrop absolute inset-0 bg-slate-950/85 backdrop-blur-md" onclick="window.closeCompareModal()"></div>
+    <div class="modal-dialog relative w-full max-w-5xl max-h-[90vh] bg-slate-900 border border-cyan-500/30 rounded-3xl shadow-2xl overflow-hidden flex flex-col z-10">
+      
+      <div class="p-5 border-b border-white/10 flex items-center justify-between bg-slate-950">
+        <div>
+          <h3 class="font-bold text-white text-base">Gadget Specification Matrix</h3>
+          <p class="text-xs text-slate-400">Compare technical specifications side-by-side</p>
+        </div>
+        <button id="btn-close-compare" class="p-2 rounded-xl text-slate-400 hover:text-white hover:bg-slate-800 transition-colors">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+      <div id="compare-modal-content" class="flex-1 overflow-y-auto p-4">
+        <!-- Rendered by js/app.js -->
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Wishlist Vault Modal -->
+  <div id="wishlist-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 modal-hidden">
+    <div class="modal-backdrop absolute inset-0 bg-slate-950/85 backdrop-blur-md" onclick="window.closeWishlistModal()"></div>
+    <div class="modal-dialog relative w-full max-w-2xl max-h-[85vh] bg-slate-900 border border-rose-500/30 rounded-3xl shadow-2xl overflow-hidden flex flex-col z-10">
+      
+      <div class="p-5 border-b border-white/10 flex items-center justify-between bg-slate-950">
+        <div class="flex items-center gap-2 text-rose-400">
+          <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+          <h3 class="font-bold text-white text-base">Your Wishlist Vault</h3>
+        </div>
+        <button id="btn-close-wishlist" class="p-2 rounded-xl text-slate-400 hover:text-white hover:bg-slate-800 transition-colors">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+      <div id="wishlist-items-container" class="flex-1 overflow-y-auto p-5">
+        <!-- Rendered by js/app.js -->
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Cyber Checkout Modal with Virtual Credit Card Preview -->
+  <div id="checkout-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 modal-hidden">
+    <div class="modal-backdrop absolute inset-0 bg-slate-950/85 backdrop-blur-md" onclick="window.closeCheckoutModal()"></div>
+    <div class="modal-dialog relative w-full max-w-4xl max-h-[92vh] bg-slate-900 border border-cyan-500/30 rounded-3xl shadow-2xl overflow-y-auto p-6 sm:p-8 z-10">
+      
+      <div class="flex items-center justify-between border-b border-white/10 pb-4 mb-6">
+        <div class="flex items-center gap-2 text-cyan-400">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+          <h3 class="text-xl font-black text-white">Encrypted Cyber Checkout</h3>
+        </div>
+        <button id="btn-close-checkout" class="p-2 rounded-xl text-slate-400 hover:text-white bg-slate-950 hover:bg-slate-800 transition-colors">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+      <form id="checkout-form">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          
+          <!-- Shipping & Billing Details -->
+          <div class="lg:col-span-7 space-y-6">
+            
+            <div>
+              <h4 class="text-xs font-mono uppercase tracking-wider text-cyan-400 font-bold mb-3">// 1. DELIVERY TELEMETRY</h4>
+              <div class="space-y-3">
+                <div>
+                  <label class="text-xs text-slate-300 font-semibold block mb-1">Full Name</label>
+                  <input type="text" id="checkout-name" value="Indra Nathan" required class="w-full px-3.5 py-2.5 bg-slate-950 border border-white/10 rounded-xl text-xs text-white focus:outline-none focus:border-cyan-400" />
+                </div>
+                <div>
+                  <label class="text-xs text-slate-300 font-semibold block mb-1">Email Address (for Dispatch Updates)</label>
+                  <input type="email" id="checkout-email" value="indra@gadgets.ai" required class="w-full px-3.5 py-2.5 bg-slate-950 border border-white/10 rounded-xl text-xs text-white focus:outline-none focus:border-cyan-400" />
+                </div>
+                <div>
+                  <label class="text-xs text-slate-300 font-semibold block mb-1">Street Address</label>
+                  <input type="text" id="checkout-address" value="404 Cyber Parkway, Suite 700" required class="w-full px-3.5 py-2.5 bg-slate-950 border border-white/10 rounded-xl text-xs text-white focus:outline-none focus:border-cyan-400" />
+                </div>
+              </div>
+            </div>
+
+            <!-- Virtual Credit Card Interactive Mockup -->
+            <div>
+              <h4 class="text-xs font-mono uppercase tracking-wider text-cyan-400 font-bold mb-3">// 2. VIRTUAL CYBERPAY CARD</h4>
+              
+              <!-- 3D Look Interactive Card -->
+              <div class="cyber-card-bg w-full aspect-[1.8/1] max-w-sm rounded-2xl p-5 flex flex-col justify-between text-white border border-white/20 mb-4 shadow-xl">
+                <div class="flex items-center justify-between">
+                  <span class="text-xs font-mono tracking-widest text-cyan-300 font-bold">INDRA CYBERPAY</span>
+                  <svg class="w-8 h-8 text-cyan-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v12M6 12h12"/></svg>
+                </div>
+                
+                <div>
+                  <div id="card-display-number" class="font-mono text-base sm:text-lg tracking-widest text-white font-bold">
+                    4242 •••• •••• 8899
+                  </div>
+                </div>
+
+                <div class="flex items-center justify-between text-xs">
+                  <div>
+                    <span class="text-[9px] text-slate-400 uppercase tracking-widest block">Cardholder</span>
+                    <span id="card-display-name" class="font-mono font-bold">INDRA NATHAN</span>
+                  </div>
+                  <div>
+                    <span class="text-[9px] text-slate-400 uppercase tracking-widest block">Expires</span>
+                    <span id="card-display-exp" class="font-mono font-bold">12/28</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Card Inputs -->
+              <div class="grid grid-cols-2 gap-3">
+                <div class="col-span-2">
+                  <label class="text-[11px] text-slate-400 block mb-1">Card Number</label>
+                  <input type="text" id="card-input-number" placeholder="4242 8900 1234 5678" maxlength="19" class="w-full px-3 py-2 bg-slate-950 border border-white/10 rounded-xl text-xs text-white font-mono focus:outline-none focus:border-cyan-400" />
+                </div>
+                <div>
+                  <label class="text-[11px] text-slate-400 block mb-1">Cardholder Name</label>
+                  <input type="text" id="card-input-name" placeholder="INDRA NATHAN" class="w-full px-3 py-2 bg-slate-950 border border-white/10 rounded-xl text-xs text-white uppercase focus:outline-none focus:border-cyan-400" />
+                </div>
+                <div class="grid grid-cols-2 gap-2">
+                  <div>
+                    <label class="text-[11px] text-slate-400 block mb-1">Exp (MM/YY)</label>
+                    <input type="text" id="card-input-exp" placeholder="12/28" maxlength="5" class="w-full px-3 py-2 bg-slate-950 border border-white/10 rounded-xl text-xs text-white font-mono focus:outline-none focus:border-cyan-400" />
+                  </div>
+                  <div>
+                    <label class="text-[11px] text-slate-400 block mb-1">CVV</label>
+                    <input type="password" id="card-input-cvv" placeholder="•••" maxlength="4" class="w-full px-3 py-2 bg-slate-950 border border-white/10 rounded-xl text-xs text-white font-mono focus:outline-none focus:border-cyan-400" />
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+          <!-- Order Summary in Checkout -->
+          <div class="lg:col-span-5 p-5 rounded-2xl bg-slate-950 border border-white/10 flex flex-col justify-between">
+            <div>
+              <h4 class="text-xs font-mono uppercase tracking-wider text-cyan-400 font-bold mb-3">// 3. ORDER TELEMETRY RECAP</h4>
+              <div id="checkout-items-list" class="space-y-1 mb-4 max-h-48 overflow-y-auto">
+                <!-- Rendered by js/app.js -->
+              </div>
+
+              <div class="space-y-2 pt-3 border-t border-white/10 text-xs">
+                <div class="flex justify-between text-slate-400">
+                  <span>Subtotal</span>
+                  <span id="checkout-subtotal" class="font-mono text-white">$0</span>
+                </div>
+                <div class="flex justify-between text-slate-400">
+                  <span>Autonomous Drone Dispatch</span>
+                  <span class="text-emerald-400 font-mono font-bold">FREE</span>
+                </div>
+                <div class="flex justify-between text-slate-400">
+                  <span>IndraCare 2-Year Warranty</span>
+                  <span class="text-cyan-400 font-mono font-bold">INCLUDED</span>
+                </div>
+                <div class="pt-2 border-t border-white/10 flex justify-between text-sm font-bold text-white">
+                  <span>Total Due</span>
+                  <span id="checkout-total" class="font-mono text-cyan-400 text-lg">$0</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-6">
+              <button 
+                type="submit" 
+                class="w-full py-4 rounded-xl btn-cyber-primary text-sm font-black flex items-center justify-center gap-2 shadow-[0_0_25px_rgba(6,182,212,0.4)]"
+              >
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                <span>Authorize & Pay <span id="checkout-pay-btn-amount">$0</span></span>
+              </button>
+              <p class="text-[10px] text-center text-slate-500 mt-2">256-Bit SSL Neural Encryption • 30-Day Money Back Guarantee</p>
+            </div>
+
+          </div>
+
+        </div>
+      </form>
+
+    </div>
+  </div>
+
+  <!-- Order Success / Confetti Modal -->
+  <div id="order-success-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 modal-hidden">
+    <div class="modal-backdrop absolute inset-0 bg-slate-950/90 backdrop-blur-md" onclick="window.closeOrderSuccessModal()"></div>
+    <div class="modal-dialog relative w-full max-w-lg bg-slate-900 border border-cyan-500/40 rounded-3xl shadow-2xl p-6 sm:p-8 z-10">
+      <div id="order-success-content">
+        <!-- Rendered by js/app.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Order Tracking Modal -->
+  <div id="tracking-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 modal-hidden">
+    <div class="modal-backdrop absolute inset-0 bg-slate-950/85 backdrop-blur-md" onclick="window.closeTrackingModal()"></div>
+    <div class="modal-dialog relative w-full max-w-xl bg-slate-900 border border-cyan-500/30 rounded-3xl shadow-2xl p-6 sm:p-8 z-10">
+      
+      <div class="flex items-center justify-between border-b border-white/10 pb-4 mb-5">
+        <div class="flex items-center gap-2 text-cyan-400">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+          <h3 class="font-bold text-white text-base">CyberDrop Shipment Telemetry</h3>
+        </div>
+        <button id="btn-close-tracking" class="p-2 rounded-xl text-slate-400 hover:text-white bg-slate-950 hover:bg-slate-800 transition-colors">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+      <!-- Tracking Search Box -->
+      <div class="flex items-center gap-2 mb-6">
+        <input 
+          type="text" 
+          id="tracking-order-id-input" 
+          placeholder="Enter Order Reference (e.g. INDRA-829140)" 
+          class="flex-1 px-4 py-2.5 bg-slate-950 border border-white/10 rounded-xl text-xs font-mono uppercase text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400"
+        />
+        <button 
+          id="btn-track-query"
+          class="px-5 py-2.5 rounded-xl btn-cyber-primary text-xs font-bold"
+        >Track</button>
+      </div>
+
+      <div id="tracking-result-container">
+        <!-- Rendered by js/app.js -->
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Floating Bottom Compare Bar -->
+  <aside 
+    id="floating-compare-bar" 
+    aria-label="Compare Gadgets Bar"
+    class="fixed bottom-6 left-1/2 -translate-x-1/2 z-40 hidden floating-compare-pill"
+  >
+    <div class="glass-panel px-5 py-3 rounded-full border border-cyan-400/50 shadow-[0_10px_35px_rgba(6,182,212,0.35)] flex items-center gap-4 bg-slate-950/90 backdrop-blur-xl">
+      <div class="flex items-center gap-2">
+        <span class="w-2 h-2 rounded-full bg-cyan-400 animate-ping"></span>
+        <span class="text-xs font-bold text-white">Compare (<span id="compare-bar-count">0</span>)</span>
+      </div>
+
+      <div id="compare-bar-thumbs" class="flex items-center gap-1.5">
+        <!-- Thumbs -->
+      </div>
+
+      <div class="flex items-center gap-2">
+        <button 
+          class="px-4 py-1.5 rounded-full btn-cyber-primary text-xs font-bold"
+          onclick="window.openCompareModal()"
+        >View Comparison</button>
+        <button 
+          class="text-xs text-slate-400 hover:text-rose-400 px-2"
+          onclick="window.clearCompare ? window.clearCompare() : (state.compare = [], renderCompareBar(), renderProducts())"
+        >Clear</button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container" class="fixed bottom-6 right-6 z-50 flex flex-col gap-2 max-w-sm pointer-events-none">
+    <!-- Dynamic Toasts -->
+  </div>
+
+  <!-- Main JavaScript App Entry -->
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

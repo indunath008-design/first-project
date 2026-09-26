@@ -1574,41 +1574,43 @@ function startDealCountdown() {
 }
 
 // --- Attach Window Bridge Functions for Inline Handlers ---
-window.openQuickView = openQuickView;
-window.closeQuickView = closeQuickView;
-window.closeCartDrawer = closeCartDrawer;
-window.openCartDrawer = openCartDrawer;
-window.removeCartItem = removeFromCart;
-window.updateCartQty = updateCartQuantity;
-window.removeWishlistItem = (id) => toggleWishlist(id);
-window.moveWishlistToCart = (id) => {
-  const p = state.products.find(item => item.id === id);
-  if (p) {
-    addToCart(p);
-    toggleWishlist(id);
-  }
-};
-window.removeCompareItem = (id) => toggleCompare(id);
-window.addCompareItemToCart = (id) => {
-  const p = state.products.find(item => item.id === id);
-  if (p) addToCart(p);
-};
-window.closeCompareModal = closeCompareModal;
-window.openCompareModal = openCompareModal;
-window.closeWishlistModal = closeWishlistModal;
-window.closeOrderSuccessModal = closeOrderSuccessModal;
-window.trackOrderById = (id) => {
-  closeOrderSuccessModal();
-  openTrackingModal(id);
-};
-window.selectSearchResult = (id) => {
-  const searchInput = document.getElementById('main-search-input');
-  const dropdown = document.getElementById('search-dropdown');
-  if (searchInput) searchInput.value = '';
-  if (dropdown) dropdown.classList.add('hidden');
-  state.searchQuery = '';
-  openQuickView(id);
-};
+if (typeof window !== 'undefined') {
+  window.openQuickView = openQuickView;
+  window.closeQuickView = closeQuickView;
+  window.closeCartDrawer = closeCartDrawer;
+  window.openCartDrawer = openCartDrawer;
+  window.removeCartItem = removeFromCart;
+  window.updateCartQty = updateCartQuantity;
+  window.removeWishlistItem = (id) => toggleWishlist(id);
+  window.moveWishlistToCart = (id) => {
+    const p = state.products.find(item => item.id === id);
+    if (p) {
+      addToCart(p);
+      toggleWishlist(id);
+    }
+  };
+  window.removeCompareItem = (id) => toggleCompare(id);
+  window.addCompareItemToCart = (id) => {
+    const p = state.products.find(item => item.id === id);
+    if (p) addToCart(p);
+  };
+  window.closeCompareModal = closeCompareModal;
+  window.openCompareModal = openCompareModal;
+  window.closeWishlistModal = closeWishlistModal;
+  window.closeOrderSuccessModal = closeOrderSuccessModal;
+  window.trackOrderById = (id) => {
+    closeOrderSuccessModal();
+    openTrackingModal(id);
+  };
+  window.selectSearchResult = (id) => {
+    const searchInput = document.getElementById('main-search-input');
+    const dropdown = document.getElementById('search-dropdown');
+    if (searchInput) searchInput.value = '';
+    if (dropdown) dropdown.classList.add('hidden');
+    state.searchQuery = '';
+    openQuickView(id);
+  };
+}
 
 // --- Initialization ---
 export function initApp() {
@@ -1667,7 +1669,7 @@ export function initApp() {
     currencySelect.value = state.activeCurrency;
     currencySelect.addEventListener('change', (e) => {
       state.activeCurrency = e.target.value;
-      localStorage.setItem('indra_currency', state.activeCurrency);
+      safeStorage.setItem('indra_currency', state.activeCurrency);
       playSound('click');
       renderProducts();
       updateHeaderBadges();
@@ -1684,7 +1686,7 @@ export function initApp() {
   if (soundBtn) {
     soundBtn.addEventListener('click', () => {
       state.soundEnabled = !state.soundEnabled;
-      localStorage.setItem('indra_sound', state.soundEnabled);
+      safeStorage.setItem('indra_sound', state.soundEnabled);
       soundBtn.innerHTML = state.soundEnabled 
         ? `<svg class="w-4 h-4 text-cyan-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 010 14.14M15.54 8.46a5 5 0 010 7.07"/></svg>`
         : `<svg class="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>`;
