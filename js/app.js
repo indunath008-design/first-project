@@ -1602,6 +1602,16 @@ if (typeof window !== 'undefined') {
     closeOrderSuccessModal();
     openTrackingModal(id);
   };
+  window.clearCompare = () => {
+    state.compare = [];
+    saveCompare();
+    renderCompareBar();
+    renderProducts();
+  };
+  window.openTrackingModal = openTrackingModal;
+  window.closeTrackingModal = closeTrackingModal;
+  window.openCheckoutModal = openCheckoutModal;
+  window.closeCheckoutModal = closeCheckoutModal;
   window.selectSearchResult = (id) => {
     const searchInput = document.getElementById('main-search-input');
     const dropdown = document.getElementById('search-dropdown');
